@@ -1,5 +1,5 @@
 import React from 'react'
-import { Grid, Container } from '@mui/material'
+import { Container } from '@mui/material'
 import NoteCard from '../component/NoteCard'
 import Masonry from '@mui/lab/Masonry'
 
@@ -14,7 +14,7 @@ const Notes = ({notes, setNotes}) => {
    
   return (
     <Container>
-      <Masonry columns={{xs:2, sm:3, md:4}} spacing={3}>
+      <Masonry columns={{xs:1, sm:2, md:3, lg:4}} spacing={3}>
           <NoteCard notes = {notes} handleDelete = {handleDelete} />
       </Masonry>  
     </Container>

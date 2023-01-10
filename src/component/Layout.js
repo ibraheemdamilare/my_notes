@@ -7,7 +7,7 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import { format } from 'date-fns';
 
 
-const drawerWidth = 240;
+const drawerWidth = 80;
 
 const Layout = ({children}) => {
 
@@ -18,13 +18,11 @@ const Layout = ({children}) => {
     const menuItems = [
         {
             id: 1,
-            text: 'My Notes',
             icon: <SubjectOutlined color= 'primary' />,
             path: '/'
         },
         {
             id: 2,
-            text: 'Create Note',
             icon: <AddCircleOutlineOutlined color= 'primary' />,
             path: '/create'
         }
@@ -58,7 +56,7 @@ const Layout = ({children}) => {
 
                     <List>
                         {menuItems.map((item) => {
-                            const {id, text, icon, path} = item
+                            const {id, icon, path} = item
                             return(
                                 
                                 <ListItem 
@@ -68,7 +66,7 @@ const Layout = ({children}) => {
                                 sx={location.pathname === path && {background: '#f9f9f9'}}
                                 >
                                     <ListItemIcon>{icon}</ListItemIcon>
-                                    <ListItemText primary={text} />
+                                    
                                 </ListItem>
                             )
                         })}
