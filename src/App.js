@@ -29,6 +29,11 @@ const getLocalStorage = () => {
 
 function App() {
   const [notes, setNotes] = useState(getLocalStorage())
+  const [title, setTitle] = useState('')
+  const [details, setDetails] = useState('')
+  const [category, setCategory] = useState('work')
+  const [editID, setEditID] = useState(null)
+  const [edited, setEdited] = useState(false)
 
   // useEffect(()=>{
   //   setNotes(Notebook)
@@ -43,8 +48,8 @@ function App() {
       <Router>
         <Layout>
         <Routes>
-          <Route path='/' element={<Notes notes={notes} setNotes={setNotes} />} />
-          <Route path='/create' element={<Create setNotes={setNotes} notes={notes} />} />
+          <Route path='/' element={<Notes edited={edited} setEdited ={setEdited} editID={editID} setEditID={setEditID} notes={notes} setNotes={setNotes} title= {title} setTitle= {setTitle} details = {details} setDetails= {setDetails} category = {category} setCategory = {setCategory} />} />
+          <Route path='/create' element={<Create edited={edited} setEdited ={setEdited} setEditID={setEditID} editID={editID} setNotes={setNotes} notes={notes} title= {title} setTitle= {setTitle} details = {details} setDetails= {setDetails} category = {category} setCategory = {setCategory} />} />
         </Routes>
         </Layout>
       </Router>

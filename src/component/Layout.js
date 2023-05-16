@@ -1,9 +1,9 @@
 import React from 'react'
 import { Drawer, Typography, Container, Avatar  } from '@mui/material'
 import { Box } from '@mui/system';
-import { List, ListItem, ListItemText, ListItemIcon, AppBar, Toolbar } from '@mui/material'
+import { List, ListItem, ListItemIcon, AppBar, Toolbar } from '@mui/material'
 import { AddCircleOutlineOutlined, SubjectOutlined } from '@mui/icons-material';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate} from 'react-router-dom';
 import { format } from 'date-fns';
 
 
@@ -12,7 +12,7 @@ const drawerWidth = 80;
 const Layout = ({children}) => {
 
     const navigate = useNavigate();
-    const location = useLocation();
+    // const location = useLocation();
     
 
     const menuItems = [
@@ -32,8 +32,8 @@ const Layout = ({children}) => {
 
         <AppBar sx={{width: `calc(100% - ${drawerWidth}px)`}}>
             <Toolbar sx={{display: 'flex', background: 'white'}}>
-                <Typography sx={{color: 'black', flexGrow: 1}}>Today's date is {format(new Date(), 'do MMMM Y')}</Typography>
-                <Typography sx={{color: 'black'}}>Ibraheem</Typography>
+                <Typography sx={{color: 'black', flexGrow: 1, fontSize: '9px'}}>Today's date is {format(new Date(), 'do MMMM Y')}</Typography>
+                <Typography sx={{color: 'black', fontSize: '11px'}}>Ibraheem</Typography>
                 <Avatar src='\FB_IMG_1542488476691.jpg' sx={{marginLeft: '8px'}} />
             </Toolbar>
         </AppBar>
@@ -50,8 +50,8 @@ const Layout = ({children}) => {
         
         >
             <Container>
-                    <Typography variant='h5'>
-                        IB Notes
+                    <Typography variant='h6' color='primary' sx={{paddingTop: "20px", paddingBottom: '20px'}}>
+                        IBD
                     </Typography>
 
                     <List>
@@ -63,7 +63,7 @@ const Layout = ({children}) => {
                                 key={id} 
                                 button 
                                 onClick={() => {navigate(path)}}
-                                sx={location.pathname === path && {background: '#f9f9f9'}}
+                                sx={{ paddingLeft: '3px'}}
                                 >
                                     <ListItemIcon>{icon}</ListItemIcon>
                                     

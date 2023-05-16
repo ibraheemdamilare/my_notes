@@ -1,10 +1,11 @@
 import React from 'react'
-import { Avatar, Paper } from '@mui/material'
+import { Avatar, CardActions, Paper } from '@mui/material'
 import { Card, CardHeader, CardContent, Typography, IconButton } from '@mui/material'
 import {DeleteOutlined} from '@mui/icons-material'
+import { EditOutlined } from '@mui/icons-material'
 
 
-const NoteCard = ({notes, handleDelete }) => {
+const NoteCard = ({notes, handleDelete, handleEdit, edited}) => {
 
   return (
     <>
@@ -39,6 +40,12 @@ const NoteCard = ({notes, handleDelete }) => {
                             </Typography>
                            
                         </CardContent>
+                        <CardActions disableSpacing>
+                        <IconButton aria-label='edit note' onClick={() => {handleEdit(id)}}>
+                            <EditOutlined sx={{color: '#0000FF'}} />
+                        </IconButton>
+                        {/* {edited && <Typography body2 sx={{fontSize: '6px', fontStyle: 'italic', letterSpacing: 3}}>Edited</Typography>} */}
+                        </CardActions>
                     </Card>   
                 </Paper>
            

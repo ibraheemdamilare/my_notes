@@ -4,12 +4,11 @@ import Button from '@mui/material/Button'
 import { Container, TextField, Radio, RadioGroup, FormControlLabel, FormLabel, FormControl } from '@mui/material'
 import KeyboardArrowRightOutlinedIcon from '@mui/icons-material/KeyboardArrowRightOutlined'
 import { useNavigate } from 'react-router-dom'
+
    
-const Create = ({setNotes, notes}) => {
+const Create = ({setNotes, setEdited, notes, setTitle, setCategory, setDetails, title, category, details, editID, setEditID}) => {
     
-    const [title, setTitle] = useState('')
-    const [details, setDetails] = useState('')
-    const [category, setCategory] = useState('work')
+    
     const [titleError, setTitleError] = useState(false)
     const [detailsError, setDetailsError] = useState(false)
     const navigate = useNavigate()
@@ -27,13 +26,36 @@ const handleClick = (e) => {
         setDetailsError(true)
     }
     
-    
-
     if(title && details) {
        const newItem = {id: new Date().getTime().toString(), title, details, category}
         setNotes([...notes, newItem])
         navigate("/")
     }
+
+    if(title && details && editID) {
+        setNotes(
+            notes.map((item) => {
+                if (item.id === editID) {
+                  return ({ ...item, title: title, details: details, category: category });
+                }
+                return item;
+              })
+        )
+        
+        setTitle('')
+        setDetails('')
+        setCategory('work')
+        setEdited(
+            notes.map((item) => {
+                if (item.id === editID) {
+                  return (true);
+                }
+                return false;
+              })
+        )
+        setEditID(null)
+        
+     }
 }
 
   return (
@@ -98,10 +120,11 @@ const handleClick = (e) => {
             color='primary'
             endIcon={<KeyboardArrowRightOutlinedIcon />}
             >
-            Submit   
+            {editID ? 'Edit' : 'Submit'}   
             </Button>
         </form>
-       
+        
+      
     </Container>
   )
 }
